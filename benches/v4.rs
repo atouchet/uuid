@@ -7,5 +7,5 @@ use uuid::Uuid;
 
 #[bench]
 fn new_v4(b: &mut Bencher) {
-    b.iter(|| Uuid::new_v4());
+    b.iter(Uuid::new_v4);
 }

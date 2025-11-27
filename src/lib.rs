@@ -1065,7 +1065,7 @@ mod tests {
         assert_eq!(s, uuid.hyphenated().to_string());
 
         check!(buffer, "{}", uuid, 36, |c| c.is_lowercase()
-            || c.is_digit(10)
+            || c.is_ascii_digit()
             || c == '-');
     }
 
@@ -1081,7 +1081,7 @@ mod tests {
         let uuid = new();
 
         check!(buffer, "{:x}", uuid, 36, |c| c.is_lowercase()
-            || c.is_digit(10)
+            || c.is_ascii_digit()
             || c == '-');
     }
 
@@ -1093,7 +1093,7 @@ mod tests {
     )]
     fn test_uuid_operator_eq() {
         let uuid1 = new();
-        let uuid1_dup = uuid1.clone();
+        let uuid1_dup = uuid1;
         let uuid2 = new2();
 
         assert!(uuid1 == uuid1);
@@ -1121,7 +1121,7 @@ mod tests {
         assert_eq!(s.len(), 36);
 
         check!(buffer, "{}", s, 36, |c| c.is_lowercase()
-            || c.is_digit(10)
+            || c.is_ascii_digit()
             || c == '-');
     }
 
@@ -1280,7 +1280,7 @@ mod tests {
         let s = uuid1.simple().to_string();
 
         assert_eq!(s.len(), 32);
-        assert!(s.chars().all(|c| c.is_digit(16)));
+        assert!(s.chars().all(|c| c.is_ascii_hexdigit()));
     }
 
     #[test]
@@ -1293,7 +1293,7 @@ mod tests {
         let s = uuid1.hyphenated().to_string();
 
         assert_eq!(36, s.len());
-        assert!(s.chars().all(|c| c.is_digit(16) || c == '-'));
+        assert!(s.chars().all(|c| c.is_ascii_hexdigit() || c == '-'));
     }
 
     #[test]
@@ -1317,39 +1317,39 @@ mod tests {
         }
 
         check!(buf, "{:x}", u, 36, |c| c.is_lowercase()
-            || c.is_digit(10)
+            || c.is_ascii_digit()
             || c == '-');
         check!(buf, "{:X}", u, 36, |c| c.is_uppercase()
-            || c.is_digit(10)
+            || c.is_ascii_digit()
             || c == '-');
         check!(buf, "{:#x}", u, 36, |c| c.is_lowercase()
-            || c.is_digit(10)
+            || c.is_ascii_digit()
             || c == '-');
         check!(buf, "{:#X}", u, 36, |c| c.is_uppercase()
-            || c.is_digit(10)
+            || c.is_ascii_digit()
             || c == '-');
 
         check!(buf, "{:X}", u.hyphenated(), 36, |c| c.is_uppercase()
-            || c.is_digit(10)
+            || c.is_ascii_digit()
             || c == '-');
         check!(buf, "{:X}", u.simple(), 32, |c| c.is_uppercase()
-            || c.is_digit(10));
+            || c.is_ascii_digit());
         check!(buf, "{:#X}", u.hyphenated(), 36, |c| c.is_uppercase()
-            || c.is_digit(10)
+            || c.is_ascii_digit()
             || c == '-');
         check!(buf, "{:#X}", u.simple(), 32, |c| c.is_uppercase()
-            || c.is_digit(10));
+            || c.is_ascii_digit());
 
         check!(buf, "{:x}", u.hyphenated(), 36, |c| c.is_lowercase()
-            || c.is_digit(10)
+            || c.is_ascii_digit()
             || c == '-');
         check!(buf, "{:x}", u.simple(), 32, |c| c.is_lowercase()
-            || c.is_digit(10));
+            || c.is_ascii_digit());
         check!(buf, "{:#x}", u.hyphenated(), 36, |c| c.is_lowercase()
-            || c.is_digit(10)
+            || c.is_ascii_digit()
             || c == '-');
         check!(buf, "{:#x}", u.simple(), 32, |c| c.is_lowercase()
-            || c.is_digit(10));
+            || c.is_ascii_digit());
     }
 
     #[test]
@@ -1364,7 +1364,7 @@ mod tests {
 
         assert!(ss.starts_with("urn:uuid:"));
         assert_eq!(s.len(), 36);
-        assert!(s.chars().all(|c| c.is_digit(16) || c == '-'));
+        assert!(s.chars().all(|c| c.is_ascii_hexdigit() || c == '-'));
     }
 
     #[test]
@@ -1732,7 +1732,7 @@ mod tests {
         let mut set = std::collections::HashSet::new();
         let id1 = new();
         let id2 = new2();
-        set.insert(id1.clone());
+        set.insert(id1);
 
         assert!(set.contains(&id1));
         assert!(!set.contains(&id2));

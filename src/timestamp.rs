@@ -443,7 +443,7 @@ pub trait ClockSequence {
     }
 }
 
-impl<'a, T: ClockSequence + ?Sized> ClockSequence for &'a T {
+impl<T: ClockSequence + ?Sized> ClockSequence for &T {
     type Output = T::Output;
 
     fn generate_sequence(&self, seconds: u64, subsec_nanos: u32) -> Self::Output {
@@ -869,7 +869,7 @@ pub mod context {
                 let ts = (seconds as u128)
                     .saturating_mul(1_000_000_000)
                     .saturating_add(subsec_nanos as u128)
-                    .saturating_add(self.by_ns as u128);
+                    .saturating_add(self.by_ns);
 
                 ((ts / 1_000_000_000) as u64, (ts % 1_000_000_000) as u32)
             }
