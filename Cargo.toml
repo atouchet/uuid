@@ -12,7 +12,7 @@ categories = [
 ]
 description = "A library to generate and parse UUIDs."
 documentation = "https://docs.rs/uuid"
-edition = "2018"
+edition = "2021"
 include = [
     "src",
     "README.md",

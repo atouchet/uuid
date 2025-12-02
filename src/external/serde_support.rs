@@ -10,7 +10,6 @@
 // except according to those terms.
 
 use crate::{
-    convert::TryFrom,
     error::*,
     fmt::{Braced, Hyphenated, Simple, Urn},
     non_nil::NonNilUuid,
@@ -329,8 +328,8 @@ pub mod simple {
 
         use crate::{external::serde_support::ExpectedFormat, Uuid};
 
-        const HYPHENATED_UUID_STR: &'static str = "f9168c5e-ceb2-4faa-b6bf-329bf39fa1e4";
-        const SIMPLE_UUID_STR: &'static str = "f9168c5eceb24faab6bf329bf39fa1e4";
+        const HYPHENATED_UUID_STR: &str = "f9168c5e-ceb2-4faa-b6bf-329bf39fa1e4";
+        const SIMPLE_UUID_STR: &str = "f9168c5eceb24faab6bf329bf39fa1e4";
 
         #[test]
         fn test_serialize_as_simple() {
@@ -461,8 +460,8 @@ pub mod braced {
 
         use crate::{external::serde_support::ExpectedFormat, Uuid};
 
-        const HYPHENATED_UUID_STR: &'static str = "f9168c5e-ceb2-4faa-b6bf-329bf39fa1e4";
-        const BRACED_UUID_STR: &'static str = "{f9168c5e-ceb2-4faa-b6bf-329bf39fa1e4}";
+        const HYPHENATED_UUID_STR: &str = "f9168c5e-ceb2-4faa-b6bf-329bf39fa1e4";
+        const BRACED_UUID_STR: &str = "{f9168c5e-ceb2-4faa-b6bf-329bf39fa1e4}";
 
         #[test]
         fn test_serialize_as_braced() {
@@ -592,8 +591,8 @@ pub mod urn {
 
         use crate::{external::serde_support::ExpectedFormat, Uuid};
 
-        const HYPHENATED_UUID_STR: &'static str = "f9168c5e-ceb2-4faa-b6bf-329bf39fa1e4";
-        const URN_UUID_STR: &'static str = "urn:uuid:f9168c5e-ceb2-4faa-b6bf-329bf39fa1e4";
+        const HYPHENATED_UUID_STR: &str = "f9168c5e-ceb2-4faa-b6bf-329bf39fa1e4";
+        const URN_UUID_STR: &str = "urn:uuid:f9168c5e-ceb2-4faa-b6bf-329bf39fa1e4";
 
         #[test]
         fn test_serialize_as_urn() {

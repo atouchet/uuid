@@ -9,7 +9,7 @@ use uuid::{ContextV7, NoContext, Timestamp, Uuid};
 
 #[bench]
 fn now_v7(b: &mut Bencher) {
-    b.iter(|| Uuid::now_v7());
+    b.iter(Uuid::now_v7);
 }
 
 #[bench]
