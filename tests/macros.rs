@@ -1,4 +1,5 @@
 #[test]
+#[cfg(not(target_arch = "wasm32"))]
 fn ui() {
     let t = trybuild::TestCases::new();
 
