@@ -32,7 +32,7 @@ use crate::{
 /// may change. It is currently only guaranteed that `NonNilUuid` and `Option<NonNilUuid>`
 /// are the same size as `Uuid`.
 #[repr(transparent)]
-#[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[derive(Copy, Clone, PartialEq, Eq, Hash, PartialOrd, Ord)]
 pub struct NonNilUuid(NonZeroU128);
 
 impl fmt::Debug for NonNilUuid {
