@@ -18,7 +18,7 @@ license = "Apache-2.0 OR MIT"
 
 # Forces a dependency on `getrandom`
 [dependencies.getrandom]
-version = "0.3"
+version = "0.4"
 optional = true
 
 [dependencies.rand]

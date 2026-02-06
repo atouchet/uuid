@@ -134,7 +134,7 @@ default-features = false
 # Private
 # (Formally public)
 [target.'cfg(not(all(target_arch = "wasm32", any(target_os = "unknown", target_os = "none"))))'.dependencies.getrandom]
-version = "0.3"
+version = "0.4"
 optional = true
 
 [target.'cfg(all(target_arch = "wasm32", any(target_os = "unknown", target_os = "none")))'.dependencies.uuid-rng-internal-lib]
